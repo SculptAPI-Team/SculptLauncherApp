@@ -40,7 +40,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.SculptLauncher.Compose"
+            android:theme="@style/Theme.SculptLauncher.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

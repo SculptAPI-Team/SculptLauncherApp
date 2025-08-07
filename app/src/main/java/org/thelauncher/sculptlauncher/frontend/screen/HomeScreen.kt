@@ -5,18 +5,21 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AppsOutage
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PlayCircleFilled
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
@@ -36,10 +39,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +51,7 @@ import org.thelauncher.sculptlauncher.LauncherApp
 import org.thelauncher.sculptlauncher.MainActivity
 import org.thelauncher.sculptlauncher.R
 import org.thelauncher.sculptlauncher.backend.launcher.GamePreloader
+import org.thelauncher.sculptlauncher.frontend.component.GameCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,7 +73,7 @@ fun Home() {
                     IconButton({ openMenu = true }) {
                         Icon(Icons.Default.MoreVert, "")
                     }
-                    DropdownMenu(expanded = openMenu, onDismissRequest = { openMenu = !openMenu}) {
+                    DropdownMenu(expanded = openMenu, onDismissRequest = { openMenu = !openMenu }) {
                         DropdownMenuItem(
                             text = { Text("NMod管理") },
                             onClick = {}
@@ -82,30 +85,14 @@ fun Home() {
                     }
                 }
             )
-        },
-        floatingActionButton = {
-            if (!gameNotInstalled && (gameVersion == "1.21.94.1")) {
-                FloatingActionButton({
-                    scope.launch(Dispatchers.IO) {
-                        GamePreloader(
-                            LauncherApp.mAbstractMCPE,
-                            preloadListener = object : GamePreloader.GamePreloadListener() {
-                                override fun onFinish(bundle: Bundle) {
-                                    val message = Message()
-                                    message.what = 1
-                                    message.data = bundle
-                                    handler.sendMessage(message)
-                                }
-                            }
-                        ).preload(context)
-                    }
-                }) {
-                    Icon(Icons.Default.PlayCircleFilled, "")
-                }
-            }
         }
     ) { pd ->
-        Column(Modifier.padding(pd).padding(horizontal = 16.dp)) {
+        Column(
+            Modifier
+                .padding(pd)
+                .padding(horizontal = 16.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             // 游戏未安装时的提示条
             if (gameNotInstalled) {
                 ListItem(
@@ -137,18 +124,40 @@ fun Home() {
                         )
                     )
                 }
+            } else {
+                GameCard(gameVersion)
+                Button(
+                    {
+                        scope.launch(Dispatchers.IO) {
+                            GamePreloader(
+                                LauncherApp.mAbstractMCPE,
+                                preloadListener = object : GamePreloader.GamePreloadListener() {
+                                    override fun onFinish(bundle: Bundle) {
+                                        val message = Message()
+                                        message.what = 1
+                                        message.data = bundle
+                                        handler.sendMessage(message)
+                                    }
+                                }
+                            ).preload(context)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.PlayCircleFilled, "")
+                        Spacer(Modifier.width(8.dp))
+                        Text("启动游戏")
+                    }
+                }
             }
-            Image(
-                painterResource(R.drawable.wallpaper), "",
-                modifier = Modifier.fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .height(200.dp)
-            )
         }
     }
 }
 
-class PreloadHandler: Handler(Looper.getMainLooper()) {
+class PreloadHandler : Handler(Looper.getMainLooper()) {
     override fun handleMessage(msg: Message) {
         super.handleMessage(msg)
         when (msg.what) {

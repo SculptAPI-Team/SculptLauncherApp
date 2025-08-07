@@ -15,4 +15,10 @@
     </style>
 
     <style name="Theme.SculptLauncher.Compose" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.SculptLauncher.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.SculptLauncher.Compose</item>
+    </style>
 </resources>
