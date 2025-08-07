@@ -28,6 +28,9 @@ SculptLauncher is an Android modding platform for Minecraft Bedrock Edition that
 - 1.16.201
 - 1.20.60.04
 - 1.21.0.03
+- 1.21.94.1 (This version will be the focus of long-term development for the project)
+
+Other Versions: https://github.com/SculptAPI-Team/SculptLauncher.git
 
 ## 📚 Getting Started
 ### Prerequisites
