@@ -12,11 +12,13 @@ add_library(nmod-core SHARED nmod.cpp)
 
 # Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
+find_package(shadowhook REQUIRED CONFIG)
 
 # Configure libraries CMake uses to link your target library.
 target_link_libraries(sculptlauncher PUBLIC
         # The game activity
         game-activity::game-activity_static
+        shadowhook::shadowhook
         android
         log
         nmod-core
