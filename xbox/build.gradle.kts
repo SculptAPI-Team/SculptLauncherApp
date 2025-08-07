@@ -12,6 +12,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -44,12 +46,12 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("org.apache.httpcomponents:httpclient:4.5.14")
-    implementation("org.simpleframework:simple-xml:2.7.1")
-    implementation("com.google.firebase:firebase-messaging:24.1.2")
-    implementation("androidx.browser:browser:1.8.0")
-    implementation("androidx.lifecycle:lifecycle-process:2.9.1")
+    implementation(libs.okhttp3)
+    implementation(libs.httpclient)
+    implementation(libs.simple.xml)
+    implementation(libs.firebasem)
+    implementation(libs.browserx)
+    implementation(libs.lifecycleq)
     implementation(libs.pkix)
     implementation(libs.gson)
 }

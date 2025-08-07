@@ -12,6 +12,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -40,11 +41,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //implementation(files("src/main/libs/xbox-release.aar"))
     implementation(project(":xbox"))
-    //implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation(libs.androidx.games.activity)
-//    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-//    implementation(libs.pkix)
-//    implementation(libs.gson)
 }

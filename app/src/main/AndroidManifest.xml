@@ -38,9 +38,9 @@
         android:label="@string/app_name"
         android:name=".LauncherApp"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.SculptLauncher">
-        <activity android:name=".StartActivity"
+        android:supportsRtl="true">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.SculptLauncher.Compose"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,6 +63,7 @@
             android:excludeFromRecents="false"
             android:exported="true"
             android:launchMode="singleTask"
+            android:theme="@style/Theme.SculptLauncher"
             android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.app.lib_name"

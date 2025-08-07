@@ -1,29 +1,38 @@
 package org.thelauncher.sculptlauncher
 
-import android.view.View
-import com.google.androidgamesdk.GameActivity
+import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Surface
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import org.thelauncher.sculptlauncher.frontend.router.RouterIndex
+import org.thelauncher.sculptlauncher.frontend.screen.Home
+import org.thelauncher.sculptlauncher.frontend.theme.SculptLauncherTheme
 
-class MainActivity : GameActivity() {
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
+        activity = this
+        setContent {
+            SculptLauncherTheme {
+                Surface {
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = RouterIndex.HomePage
+                    ) {
+                        composable<RouterIndex.HomePage> { Home() }
+                    }
+                }
+            }
+        }
+    }
+
     companion object {
-        init {
-            System.loadLibrary("sculptlauncher")
-        }
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            hideSystemUi()
-        }
-    }
-
-    private fun hideSystemUi() {
-        val decorView = window.decorView
-        decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+        lateinit var activity: MainActivity
     }
 }
