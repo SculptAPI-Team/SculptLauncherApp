@@ -20,6 +20,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters.add("arm64-v8a")
+        }
     }
 
     buildTypes {
@@ -60,4 +64,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":minecraftpe"))
+    implementation("com.bytedance.android:shadowhook:2.0.0")
 }
