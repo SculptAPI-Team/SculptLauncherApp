@@ -12,6 +12,8 @@ android {
 
     packaging {
         resources.excludes.add("META-INF/DEPENDENCIES")
+        jniLibs.pickFirsts.add("**/libshadowhook.so")
+        jniLibs.pickFirsts.add("**/libshadowhook_nothing.so")
     }
 
     defaultConfig {
@@ -67,8 +69,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+//    debugImplementation(libs.androidx.ui.test.manifest)
+//    androidTestImplementation(libs.androidx.ui.test.junit4)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
