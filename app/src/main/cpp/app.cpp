@@ -20,13 +20,3 @@ Java_org_sculptlauncher_app_backend_launcher_util_LibraryLoader_nativeOnLauncher
     dlclose(image);
     env->ReleaseStringUTFChars(libPath, mNativeLibPath);
 }
-
-extern "C" JNIEXPORT void JNICALL
-Java_org_sculptlauncher_app_backend_launcher_util_LibraryLoader_nativeOnNModAPILoaded(
-        JNIEnv *env, jobject thiz, jstring libPath) {
-    const char *mNativeLibPath = toString(env, libPath).c_str();
-    //mMCPENativeLibPath = mNativeLibPath;
-    void *imageMCPE = (void *) dlopen(mNativeLibPath, RTLD_LAZY);
-    //mAddrAndroidAppDataPath = ((std::string*)dlsym(imageMCPE,"_ZN19AppPlatform_android20ANDROID_APPDATA_PATHE"));
-    dlclose(imageMCPE);
-}
