@@ -16,9 +16,14 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.12.0-alpha07"
 
 nav3Core = "1.0.0-alpha08"
-lifecycleViewmodelNav3 = "1.0.0-alpha01"
+lifecycleViewmodelNav3 = "2.10.0-alpha03"
 kotlinxSerializationCore = "1.9.0"
+protobufJavalite = "4.32.0"
 room = "2.7.2"
+
+lifecycleq = "2.9.1"
+pkix = "1.54.0.0"
+httpclient = "4.5.14"
 
 shadowhook = "2.0.0"
 
@@ -47,14 +52,18 @@ androidx-icons-ext = { module="androidx.compose.material:material-icons-extended
 
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
-androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "nav3Core" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 androidx-adaptive-navigation3 = { module = "androidx.compose.material3.adaptive:adaptive-navigation3", version.ref = "nav3Core" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
+protobuf-javalite = { module = "com.google.protobuf:protobuf-java", version.ref = "protobufJavalite" }
 shadowhook = { module = "com.bytedance.android:shadowhook", version.ref = "shadowhook" }
+lifecycleq = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleq" }
+pkix = { module = "com.madgag.spongycastle:pkix", version.ref = "pkix" }
+httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "httpclient" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

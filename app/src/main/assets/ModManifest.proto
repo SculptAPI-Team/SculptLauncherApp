@@ -1,7 +1,28 @@
 syntax = "proto3";
 
-message Person {
-  optional string name = 1;
-  optional int32 id = 2;
-  optional string email = 3;
+message ModManifest {
+  string mod_name = 1; // 模组名
+  repeated DeveloperInfo developers = 2; // 开发人员列表
+  string mod_id = 3; // 模组UUID
+  optional string repo = 4; // 【可选】开源模组的仓库
+  ModInfo info = 5; // 模组信息
+}
+
+message DeveloperInfo {
+  string name = 1; // 开发者昵称
+  optional string email = 2; // 联络邮箱
+  optional string repo = 3; // 个人GitHub地址
+}
+
+message ModInfo {
+  string entrypoint = 1; // 入口点（.so文件）路径
+  string icon = 2; // 图标路径
+  uint64 min_launcher_version = 3; // 最小启动器版本
+  uint64 mod_version = 4; // 模组版本
+  repeated Dep dependencies = 5; // 前置依赖
+}
+
+message Dep {
+  string mid = 1; // 依赖的UUID
+  uint64 version = 2; // 依赖的版本
 }

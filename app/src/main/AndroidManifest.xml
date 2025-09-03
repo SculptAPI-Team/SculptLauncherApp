@@ -70,6 +70,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.microsoft.xal.browser.BrowserLaunchActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SculptLauncher" />
+        <activity android:name="com.microsoft.xal.browser.WebKitWebViewController"
+            android:exported="false"
+            android:theme="@style/Theme.SculptLauncher" />
     </application>
 
 </manifest>

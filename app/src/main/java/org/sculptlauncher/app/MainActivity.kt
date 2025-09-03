@@ -21,7 +21,9 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.bytedance.shadowhook.ShadowHook
 import org.sculptlauncher.app.frontend.Home
+import org.sculptlauncher.app.frontend.ModManager
 import org.sculptlauncher.app.frontend.page.HomePage
+import org.sculptlauncher.app.frontend.page.mod.ModManagerView
 import org.sculptlauncher.app.frontend.theme.SculptLauncherTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,10 +51,19 @@ class MainActivity : ComponentActivity() {
                                 rememberViewModelStoreNavEntryDecorator(),
                             ),
                         onBack = { backStack.removeLastOrNull() },
-                        entryProvider = entryProvider({
-                            NavEntry(it) { Text("Unknown destination") }
-                        }) {
-                            entry<Home> { HomePage() }
+                        entryProvider = entryProvider<Any>(
+                            { NavEntry(it) { Text("Unknown destination") } }
+                        ) {
+                            entry<Home> {
+                                HomePage(
+                                    goPage = { backStack.add(it) }
+                                )
+                            }
+                            entry<ModManager> {
+                                ModManagerView(
+                                    back = { backStack.removeAt(backStack.lastIndex) }
+                                )
+                            }
                         }
                     )
                 }

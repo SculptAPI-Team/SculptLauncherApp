@@ -42,4 +42,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("com.squareup.okhttp3:okhttp:5.1.0")
+    implementation("androidx.browser:browser:1.10.0-alpha01")
+    implementation("com.google.code.gson:gson:2.13.1")
+    implementation("org.simpleframework:simple-xml:2.7.1")
+    implementation(libs.lifecycleq)
+    implementation(libs.pkix)
+    implementation(libs.httpclient)
 }

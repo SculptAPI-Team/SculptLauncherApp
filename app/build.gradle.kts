@@ -97,6 +97,7 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.shadowhook)
+    implementation(libs.protobuf.javalite)
 
     implementation(project(":minecraft"))
 }
