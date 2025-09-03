@@ -7,7 +7,7 @@
     <style name="Theme.SculptLauncher.Splash" parent="Theme.SplashScreen">
         <item name="postSplashScreenTheme">@style/Theme.SculptLauncher</item>
         <item name="windowSplashScreenBackground">@color/teal_700</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/launcher</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/launcher_icon</item>
         <item name="windowSplashScreenAnimationDuration">1200</item>
     </style>
 </resources>

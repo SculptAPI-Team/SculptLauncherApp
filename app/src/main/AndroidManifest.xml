@@ -34,10 +34,10 @@
         android:isGame="true"
         android:appCategory="game"
         android:largeHeap="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/launcher_icon"
         android:label="@string/app_name"
         android:name=".LauncherApp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/launcher_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SculptLauncher.Splash">
         <activity android:name=".MainActivity"
