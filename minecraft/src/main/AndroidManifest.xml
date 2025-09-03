@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-feature
+        android:glEsVersion="0x20000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application>
+        <meta-data
+            android:name="appcenter_android_trial_id"
+            android:value="1234567890" />
+
+        <service
+            android:name="com.mojang.minecraftpe.ImportService"
+            android:exported="true" />
+
+        <meta-data
+            android:name="game_display_name"
+            android:resource="@string/app_name" />
+        <meta-data
+            android:name="game_icon"
+            android:resource="@drawable/icon" />
+        <meta-data
+            android:name="appcenter_android_id"
+            android:value="1234567890" />
+
+        <uses-library
+            android:name="xperiaplaycertified"
+            android:required="false" />
+
+        <service
+            android:name="com.mojang.minecraftpe.NotificationListenerService"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+<!--        <activity-->
+<!--            android:name="com.microsoft.xal.browser.IntentHandler"-->
+<!--            android:configChanges="orientation"-->
+<!--            android:exported="true"-->
+<!--            android:launchMode="singleTask"-->
+<!--            android:screenOrientation="sensorLandscape"-->
+<!--            android:theme="@style/AppTheme">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <data-->
+<!--                    android:host="auth"-->
+<!--                    android:scheme="@string/xal_token" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <activity-->
+<!--            android:name="com.microsoft.xal.browser.WebKitWebViewController"-->
+<!--            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"-->
+<!--            android:screenOrientation="sensorLandscape"-->
+<!--            android:theme="@style/AppTheme" />-->
+
+<!--        <activity-->
+<!--            android:name="com.microsoft.xal.browser.BrowserLaunchActivity"-->
+<!--            android:configChanges="orientation"-->
+<!--            android:exported="false"-->
+<!--            android:launchMode="singleTask"-->
+<!--            android:screenOrientation="sensorLandscape"-->
+<!--            android:theme="@style/AppTheme" />-->
+    </application>
+
+</manifest>

@@ -1,25 +1,14 @@
-# For more information about using CMake with Android Studio, read the
-# documentation: https://d.android.com/studio/projects/add-native-code.html
+cmake_minimum_required(VERSION 3.31.6)
 
-cmake_minimum_required(VERSION 3.22.1)
+project("app")
 
-project("sculptlauncher")
+add_library(${CMAKE_PROJECT_NAME} SHARED app.cpp)
 
-# Creates your game shared library. The name must be the same as the
-# one used for loading in your Kotlin/Java or AndroidManifest.txt files.
-add_library(sculptlauncher SHARED main.cpp)
-add_library(nmod-core SHARED nmod.cpp)
-
-# Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
 find_package(shadowhook REQUIRED CONFIG)
 
-# Configure libraries CMake uses to link your target library.
-target_link_libraries(sculptlauncher PUBLIC
-        # The game activity
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC
         game-activity::game-activity_static
         shadowhook::shadowhook
-        android
-        log
-        nmod-core
+        android log
 )
