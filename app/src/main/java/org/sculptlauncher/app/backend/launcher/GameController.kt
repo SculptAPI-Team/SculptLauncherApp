@@ -3,6 +3,7 @@ package org.sculptlauncher.app.backend.launcher
 import android.content.res.AssetManager
 import android.os.Bundle
 import com.mojang.minecraftpe.MainActivity
+import org.sculptlauncher.app.backend.launcher.util.NativeUtil
 
 class GameController internal constructor(private val mAbstractMCPE: AbstractMCPE) {
     val gameAssets: AssetManager = mAbstractMCPE.minecraftInfo.assets
@@ -12,7 +13,7 @@ class GameController internal constructor(private val mAbstractMCPE: AbstractMCP
             activity.assets,
             mAbstractMCPE.minecraftInfo.minecraftPackageContext.packageResourcePath
         )
-        //NativeUtil.setValues(activity)
+        NativeUtil.setValues(activity)
         // TODO: 对于关闭安全模式的，加载nMOD资产
     }
 
