@@ -611,7 +611,34 @@ public class MainActivity extends GameActivity implements View.OnKeyListener, Fi
     Code decompiled incorrectly, please refer to instructions dump.
     To view partially-correct code enable 'Show inconsistent code' option in preferences
 */
-        textInputProxyEditTextbox.setOnEditorActionListener((v, actionId, event) -> false);
+        textInputProxyEditTextbox.setOnEditorActionListener((v, actionId, event) -> {
+            boolean z = actionId == 5;
+            boolean z2 = actionId == 0 && event != null && event.getAction() == 0;
+
+            if (!z && !z2) {
+                if (actionId != 7) {
+                    return false;
+                }
+                MainActivity.this.nativeBackPressed();
+                return true;
+            }
+
+            if (z) {
+                MainActivity.this.nativeReturnKeyPressed();
+            }
+
+            String string = textInputProxyEditTextbox.getText().toString();
+            int selectionEnd = textInputProxyEditTextbox.getSelectionEnd();
+            if (selectionEnd < 0 || selectionEnd > string.length()) {
+                selectionEnd = string.length();
+            }
+            if (!((textInputProxyEditTextbox.getInputType() & 131072) != 0)) {
+                return true;
+            }
+            textInputProxyEditTextbox.setText(string.substring(0, selectionEnd) + "\n" + string.substring(selectionEnd, string.length()));
+            textInputProxyEditTextbox.setSelection(Math.min(selectionEnd + 1, textInputProxyEditTextbox.getText().length()));
+            return true;
+        });
         textInputProxyEditTextbox.addTextChangedListener(new TextWatcher() { // from class: com.mojang.minecraftpe.MainActivity.6
 
             @Override // android.text.TextWatcher
