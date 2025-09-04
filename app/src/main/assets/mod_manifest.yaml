@@ -1,0 +1,20 @@
+nmod:
+  name: 'Mod Name'
+  id: 'UUID (lowercase)'
+  version: 100
+  repo: 'https://github.com/example-mod'
+  entrypoint: 'libs/example.so'
+  icon: 'res/icon.png'
+
+developers:
+  - name: 'Me'
+    repo: 'https://github.com/example-person'
+    email: 'example@example.com'
+
+requirements:
+  minLauncherVersion: 10000
+  maxLauncherVersion: 20000
+
+dependencies:
+  - id: 'Dep Mod Id'
+    version: 100

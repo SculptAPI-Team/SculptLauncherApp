@@ -93,6 +93,8 @@ dependencies {
 
     implementation(libs.voyager.navigator)
     implementation(libs.voyager.screenmodel)
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
 
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.shadowhook)
