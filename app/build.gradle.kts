@@ -85,15 +85,14 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.icons.ext)
-    implementation(libs.androidx.navigation3.ui)
-    implementation(libs.androidx.navigation3.runtime)
-    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-    //implementation(libs.androidx.adaptive.navigation3)
+
+    implementation(libs.voyager.navigator)
+    implementation(libs.voyager.screenmodel)
 
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.shadowhook)

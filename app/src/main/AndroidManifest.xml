@@ -49,11 +49,6 @@
         </activity>
 
         <activity
-            android:name=".frontend.activity.GameStage"
-            android:exported="false"
-            android:theme="@style/Theme.SculptLauncher" />
-
-        <activity
             android:name=".frontend.activity.GamePlayActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
@@ -66,15 +61,55 @@
                 android:name="android.app.lib_name"
                 android:value="app" />
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="minecraft"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="xbox_live_game_invite"/>
+                <action android:name="xbox_live_achievement_unlock"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:pathPattern=".*\\.mcworld"/>
+                <data android:pathPattern=".*\\..*\\.mcworld"/>
+                <data android:pathPattern=".*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern=".*\\.mcpack"/>
+                <data android:pathPattern=".*\\..*\\.mcpack"/>
+                <data android:pathPattern=".*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern=".*\\.mcaddon"/>
+                <data android:pathPattern=".*\\..*\\.mcaddon"/>
+                <data android:pathPattern=".*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern=".*\\.mctemplate"/>
+                <data android:pathPattern=".*\\..*\\.mctemplate"/>
+                <data android:pathPattern=".*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.mctemplate"/>
             </intent-filter>
         </activity>
 
         <activity android:name="com.microsoft.xal.browser.BrowserLaunchActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:screenOrientation="sensorLandscape"
             android:exported="false"
             android:theme="@style/Theme.SculptLauncher" />
         <activity android:name="com.microsoft.xal.browser.WebKitWebViewController"
+            android:configChanges="orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape"
             android:exported="false"
             android:theme="@style/Theme.SculptLauncher" />
     </application>

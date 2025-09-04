@@ -33,11 +33,11 @@
     <application>
         <meta-data
             android:name="appcenter_android_trial_id"
-            android:value="1234567890" />
+            android:value="@string/appcenter_android_id" />
 
         <service
             android:name="com.mojang.minecraftpe.ImportService"
-            android:exported="true" />
+            android:exported="false" />
 
         <meta-data
             android:name="game_display_name"
@@ -47,11 +47,15 @@
             android:resource="@drawable/icon" />
         <meta-data
             android:name="appcenter_android_id"
-            android:value="1234567890" />
+            android:value="@string/appcenter_android_id" />
 
         <uses-library
             android:name="xperiaplaycertified"
             android:required="false" />
+
+        <meta-data
+            android:name="xperiaplayoptimized_content"
+            android:resource="@string/xperiaplayoptimized_content" />
 
         <service
             android:name="com.mojang.minecraftpe.NotificationListenerService"
