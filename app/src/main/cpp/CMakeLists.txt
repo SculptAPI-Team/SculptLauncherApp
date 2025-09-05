@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.31.6)
 
+# 测试时使用
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
+
 project("app")
 
 add_library(${CMAKE_PROJECT_NAME} SHARED app.cpp)

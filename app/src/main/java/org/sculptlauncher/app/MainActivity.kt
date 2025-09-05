@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
                     Navigator(Home()) {
                         LaunchedEffect(pendingUri) {
                             pendingUri?.let { uri ->
-                                println(uri)
                                 it.push(Import(uri))
                                 pendingUri = null
                             }
@@ -64,7 +63,12 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         init {
-            ShadowHook.init(ShadowHook.ConfigBuilder().setMode(ShadowHook.Mode.UNIQUE).build())
+            ShadowHook.init(
+                ShadowHook.ConfigBuilder()
+                    .setMode(ShadowHook.Mode.UNIQUE)
+                    .setDebuggable(true)
+                    .build()
+            )
             System.loadLibrary("app")
         }
 
