@@ -1,5 +1,13 @@
 package com.mojang.minecraftpe;
 
+import android.util.Log;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.Objects;
+
 public class CrashManager {
     private String mCrashDumpFolder;
     private String mCrashUploadURI;
@@ -36,6 +44,20 @@ public class CrashManager {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() { // from class: com.mojang.minecraftpe.CrashManager.1
             @Override // java.lang.Thread.UncaughtExceptionHandler
             public void uncaughtException(Thread t, Throwable e) {
+                var activity = MainActivity.mInstance;
+                var content = new StringBuilder();
+                content.append(t.toString()).append("\n");
+                content.append(e.toString()).append("\n");
+                content.append(e.getMessage()).append("\n");
+                var file = activity.getApplicationContext().getExternalFilesDir("crash");
+                var time = String.valueOf(System.currentTimeMillis());
+                var thisFile = new File(file, time + ".txt");
+                try {
+                    Files.write(thisFile.toPath(), content.toString().getBytes(StandardCharsets.UTF_8));
+                    Log.i("日志返回", "将日志保存到了" + thisFile.getAbsolutePath());
+                } catch (IOException ex) {
+                    Log.w("日志返回", Objects.requireNonNull(ex.getMessage()));
+                }
             }
         });
     }

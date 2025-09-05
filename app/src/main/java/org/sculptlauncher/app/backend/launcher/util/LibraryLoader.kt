@@ -37,7 +37,7 @@ object LibraryLoader {
     @SuppressLint("UnsafeDynamicallyLoadedCode")
     fun loadNModAPI(mcLibsPath: String) {
         System.loadLibrary("sculpt-api")
-        //System.loadLibrary("test")
+        System.loadLibrary("test")
         nativeOnNModAPILoaded("$mcLibsPath/libminecraftpe.so")
     }
 }
